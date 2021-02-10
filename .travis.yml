@@ -17,9 +17,17 @@ install:
   - pip install codacy-coverage
 script:
   - cd decide
+  - cp travis_local_settings.py local_settings.py
   - coverage run --branch --source=. ./manage.py test store --keepdb 
   - coverage xml
   - python-codacy-coverage -r coverage.xml
 branches:
   only:
     - master
+deploy:
+  provider: heroku
+  app: egc-examen3
+  strategy: git
+  apikey: f2ae22ae-4df4-4464-8842-395aa782b699
+  on:
+    branch: master

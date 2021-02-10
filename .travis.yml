@@ -22,8 +22,6 @@ script:
   - python-codacy-coverage -r coverage.xml
 branches:
   only:
-    - maste
-  branches:
-    only:
-      - master
+    - master
+
 
